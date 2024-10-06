@@ -1,0 +1,10 @@
+# Python cache
+*.pyc
+__pycache__/
+
+# macOS
+.DS_Store
+
+# Home Assistant
+home-assistant.log
+home-assistant_v2.db
