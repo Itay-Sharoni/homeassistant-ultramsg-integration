@@ -2,9 +2,17 @@
 *.pyc
 __pycache__/
 
+# Virtual environments
+.venv
+.envrc
+
+# IDE files
+.vscode
+*.code-workspace
+
+# Logs and PID files
+*.log
+*.pid
+
 # macOS
 .DS_Store
-
-# Home Assistant
-home-assistant.log
-home-assistant_v2.db
