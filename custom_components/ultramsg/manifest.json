@@ -2,7 +2,7 @@
   "domain": "ultramsg",
   "name": "UltraMsg",
   "version": "1.0.0",
-  "documentation": "https://github.com/yourusername/ultramsg_homeassistant",
+  "documentation": "https://github.com/Itay-Sharoni/HomeAssistant_UltraMSG",
   "requirements": [],
   "codeowners": ["@Itay-Sharoni"],
   "config_flow": true,
