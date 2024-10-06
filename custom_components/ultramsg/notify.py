@@ -17,22 +17,18 @@ _LOGGER = logging.getLogger(__name__)
 async def async_get_service(hass: HomeAssistant, config, discovery_info=None):
     """Get the UltraMsg notification service."""
     if discovery_info is None:
-        # YAML configuration
-        instance_id = hass.data[DOMAIN].get(CONF_INSTANCE_ID)
-        token = hass.data[DOMAIN].get(CONF_TOKEN)
-    else:
-        # UI configuration
-        entry_id = discovery_info["entry_id"]
-        entry_data = hass.data[DOMAIN].get(entry_id)
-        if not entry_data:
-            _LOGGER.error("No configuration data found for UltraMsg")
-            return None
-        instance_id = entry_data.get(CONF_INSTANCE_ID)
-        token = entry_data.get(CONF_TOKEN)
-
-    if not instance_id or not token:
-        _LOGGER.error("Instance ID and Token must be set")
+        _LOGGER.error("No discovery info, unable to set up UltraMsg notify service")
         return None
+
+    entry_id = discovery_info["entry_id"]
+    entry_data = hass.data[DOMAIN].get(entry_id)
+
+    if not entry_data:
+        _LOGGER.error("No configuration data found for UltraMsg")
+        return None
+
+    instance_id = entry_data.get(CONF_INSTANCE_ID)
+    token = entry_data.get(CONF_TOKEN)
 
     return UltraMsgNotificationService(instance_id, token)
 
@@ -68,6 +64,7 @@ class UltraMsgNotificationService(BaseNotificationService):
 
                 try:
                     async with session.post(self._api_url, json=payload, timeout=10) as response:
+                        response_text = await response.text()
                         response.raise_for_status()
                         _LOGGER.debug("Message sent to %s: %s", target, message)
                 except aiohttp.ClientError as e:
