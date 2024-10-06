@@ -1,0 +1,10 @@
+{
+  "domain": "ultramsg",
+  "name": "UltraMsg",
+  "version": "1.0.0",
+  "documentation": "https://github.com/yourusername/ultramsg_homeassistant",
+  "requirements": [],
+  "codeowners": ["@Itay-Sharoni"],
+  "config_flow": true,
+  "iot_class": "cloud_push"
+}
