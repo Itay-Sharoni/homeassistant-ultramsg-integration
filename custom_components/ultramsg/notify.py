@@ -48,10 +48,10 @@ class UltraMSGNotificationService(BaseNotificationService):
             return
 
         for target in targets:
-            self._send_whatsapp_message(target, message, data)
+            self._send_ultramsg_message(target, message, data)
 
-    def _send_whatsapp_message(self, to, body, data):
-        """Send a WhatsApp message via UltraMSG."""
+    def _send_ultramsg_message(self, to, body, data):
+        """Send a message via UltraMSG."""
         payload = {
             "token": self.token,
             "to": to,
