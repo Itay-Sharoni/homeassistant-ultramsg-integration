@@ -12,7 +12,8 @@ class UltraMSGConfigFlow(config_entries.ConfigFlow, domain='ultramsg'):
     async def async_step_user(self, user_input=None):
         """Handle the initial step of the config flow."""
         # Check if UltraMSG is already configured by verifying if the notify service exists
-        notify_services = self.hass.services.async_services().get("notify", {})
+        services = await self.hass.services.async_services()
+        notify_services = services.get("notify", {})
         is_configured = "ultramsg" in notify_services
 
         if is_configured:
@@ -21,7 +22,7 @@ class UltraMSGConfigFlow(config_entries.ConfigFlow, domain='ultramsg'):
             message = "UltraMSG is not yet configured in `configuration.yaml`. Please add the necessary configuration."
 
         # Create a persistent notification with the message
-        await async_create(
+        async_create(
             self.hass,
             message,
             title="UltraMSG Configuration",
