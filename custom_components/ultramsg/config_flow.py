@@ -10,6 +10,7 @@ class UltraMSGConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_step_user(self, user_input=None):
         """Handle the initial step of the config flow."""
+        
         if self.hass.data.get(DOMAIN, {}).get('configured'):
             message = "UltraMSG is already configured via configuration.yaml. No further action is needed."
         else:
@@ -24,7 +25,7 @@ class UltraMSGConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
         # Abort the flow without a reason (since we can't display messages directly)
-        return self.async_abort(reason="")
+        return self.async_abort(reason="message")
 
     @callback
     def async_get_options_flow(self):
