@@ -1,8 +1,7 @@
-# custom_components/ultramsg/notify.py
+"""Send notifications as WhatsApp messages via UltraMSG."""
 
 import logging
 import requests
-from .const import DOMAIN
 import voluptuous as vol
 
 from homeassistant.components.notify import (
@@ -14,7 +13,6 @@ from homeassistant.components.notify import (
 from homeassistant.const import CONF_TOKEN
 import homeassistant.helpers.config_validation as cv
 
-
 _LOGGER = logging.getLogger(__name__)
 
 CONF_INSTANCE_ID = "instance_id"
@@ -25,23 +23,14 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_TOKEN): cv.string,
 })
 
+
 def get_service(hass, config, discovery_info=None):
     """Get the UltraMSG notification service."""
-    instance_id = config.get(CONF_INSTANCE_ID)
-    token = config.get(CONF_TOKEN)
-    
-    if instance_id and token:
-        hass.data.setdefault(DOMAIN, {})
-        hass.data[DOMAIN]['configured'] = True
-        return UltraMSGNotificationService(instance_id, token)
-    else:
-        _LOGGER.error("UltraMSG configuration incomplete.")
-        hass.data.setdefault(DOMAIN, {})
-        hass.data[DOMAIN]['configured'] = False
-        return None
+    return UltraMSGNotificationService(config[CONF_INSTANCE_ID], config[CONF_TOKEN])
+
 
 class UltraMSGNotificationService(BaseNotificationService):
-    """Implement the notification service for UltraMSG."""
+    """Implement the notification service for the UltraMSG service."""
 
     def __init__(self, instance_id, token):
         """Initialize the service."""
