@@ -3,7 +3,6 @@
 from homeassistant import config_entries
 from homeassistant.core import callback
 from homeassistant.components.persistent_notification import async_create
-from .const import DOMAIN
 
 class UltraMSGConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle the config flow for UltraMSG."""
