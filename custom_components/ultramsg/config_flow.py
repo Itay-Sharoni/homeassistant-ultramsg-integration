@@ -25,7 +25,7 @@ class UltraMSGConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
         # Abort the flow without a reason (since we can't display messages directly)
-        return self.async_abort(reason="message")
+        return self.async_abort(reason=message)
 
     @callback
     def async_get_options_flow(self):
