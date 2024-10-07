@@ -1,7 +1,7 @@
 {
   "domain": "ultramsg",
   "name": "Send WhatsApp Messages via UltraMSG",
-  "version": "1.1.2,
+  "version": "1.1.2",
   "documentation": "https://github.com/Itay-Sharoni/homeassistant-ultramsg-integration",
   "issue_tracker": "https://github.com/Itay-Sharoni/homeassistant-ultramsg-integration/issues",
   "requirements": [],
