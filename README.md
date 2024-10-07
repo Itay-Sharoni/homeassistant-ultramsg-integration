@@ -1,10 +1,16 @@
 # Home Assistant UltraMSG Integration
 
-![HACS](https://img.shields.io/badge/HACS-Default-orange)
+![HACS](https://img.shields.io/badge/HACS-Custom-blue)
 ![License](https://img.shields.io/github/license/Itay-Sharoni/homeassistant-ultramsg-integration)
+[![Github Downloads (total)](https://img.shields.io/github/downloads/Itay-Sharoni/homeassistant-ultramsg-integration/total.svg)]()
 ![Stars](https://img.shields.io/github/stars/Itay-Sharoni/homeassistant-ultramsg-integration?style=social)
 
-Send Home Assistant notifications directly to WhatsApp (Trademark of Meta, i have no connection to them) using **UltraMSG** with this seamless integration!
+
+Send Home Assistant notifications directly to WhatsApp using **UltraMSG** with this seamless integration!
+
+
+# Clarification
+**This integration solely utilizes the UltraMSG service for sending notifications and is not affiliated with, endorsed by, or related to WhatsApp or Meta in any way.**
 
 ## 📖 Table of Contents
 
@@ -84,6 +90,7 @@ notify:
 Replace `<your UltraMSG instance ID>` and `<your UltraMSG token>` with the credentials obtained from your UltraMSG Dashboard.
 
 3. **Save the Configuration and restart Home Assistant** to apply the changes.
+* **Click [here](https://youtu.be/SWkZMCCEQk0?si=pI4rxqxqpqojaGlu&t=51) for a quick guide on configuring configuration.yaml** - credit to [Siytek](https://www.youtube.com/@siytek) for this video
 
 ## 🚀Usage
 
