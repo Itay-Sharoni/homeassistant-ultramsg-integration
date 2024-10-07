@@ -1,3 +1,5 @@
+# custom_components/ultramsg/config_flow.py
+
 from homeassistant import config_entries
 from homeassistant.core import callback
 from homeassistant.components.persistent_notification import async_create
@@ -10,21 +12,23 @@ class UltraMSGConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_step_user(self, user_input=None):
         """Handle the initial step of the config flow."""
-        
-        if self.hass.data.get(DOMAIN, {}).get('configured'):
-            message = "UltraMSG is already configured via configuration.yaml. No further action is needed."
+        # Check if UltraMSG is already configured
+        is_configured = self.hass.data.get(DOMAIN, {}).get('configured', False)
+
+        if is_configured:
+            message = "UltraMSG is already configured via `configuration.yaml`. No further action is needed."
         else:
-            message = "UltraMSG is not yet configured in configuration.yaml. Please add the necessary configuration."
+            message = "UltraMSG is not yet configured in `configuration.yaml`. Please add the necessary configuration."
 
         # Create a persistent notification with the message
-        async_create(
+        await async_create(
             self.hass,
             message,
             title="UltraMSG Configuration",
             notification_id="ultramsg_config_flow"
         )
 
-        # Abort the flow without a reason (since we can't display messages directly)
+        # Abort the flow without a specific reason key
         return self.async_abort(reason=message)
 
     @callback
