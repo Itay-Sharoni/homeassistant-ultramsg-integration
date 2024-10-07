@@ -26,6 +26,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 def get_service(hass, config, discovery_info=None):
     """Get the UltraMSG notification service."""
+    hass.data.setdefault('ultramsg', {})
+    hass.data['ultramsg']['configured'] = True
     return UltraMSGNotificationService(config[CONF_INSTANCE_ID], config[CONF_TOKEN])
 
 
