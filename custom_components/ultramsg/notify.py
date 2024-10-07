@@ -57,7 +57,7 @@ class UltraMSGNotificationService(BaseNotificationService):
             "to": to,
             "body": body,
             "priority": data.get("priority", 10),
-            "referenceId": data.get("referenceId", ""),
+            "referenceId": data.get("referenceId", "HomeAssistant"),
             "msgId": data.get("msgId", ""),
             "mentions": data.get("mentions", ""),
         }
