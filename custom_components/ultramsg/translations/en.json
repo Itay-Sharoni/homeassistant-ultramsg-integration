@@ -1,0 +1,7 @@
+{
+  "config_flow": {
+    "abort": {
+      "ui_not_required": "UltraMSG is configured via `configuration.yaml`. No need to add it through the UI."
+    }
+  }
+}
